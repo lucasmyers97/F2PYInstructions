@@ -7,10 +7,18 @@ After you have completed the installation, you'll need to add the MinGW binary f
 
 To add this path to your Path environment variable, seach "Environment Variables" in your Windows search bar and then click the `Edit the system environment variables` prompt. Then click the `Environment Varibles...` button. There should be a variable called `Path`. Double clicking that should bring up the paths stored in your Path environment variable. Double click on an empty space and paste in the folder path. That's all!
 
-## Compiling simple Fortran programs and making them more "pythonic"
+## Compiling simple Fortran programs in the command terminal and making them more "pythonic"
+F2PY has a very simple and concise introduction to the package [here][f2py] that can be used immediately after you have installed and linked your compilers. Note that, for Windows users who have installed Python via Anaconda, you will want to use the Anaconda Prompt to execute the command line commands. The only other problem that Windows users may run into (that I ran into) was that the default C-compiler is the Microsoft Visual Studios compiler. If this is the case, it will throw an error claiming that it cannot find a particular `.bat` file. To circumvent this, just add the `--compiler=mingw32` option at the end whenever you are using the `-c` compile option with F2PY.
+
+## Compiling simple Fortran programs via a Python script
+Sometimes it is nicer to use a Python script to do these kinds of compilations if say, you needed to programmatically read in lots of filenames from a folder. Information on how to do this is found at the bottom of [this page][npf2py]. One just needs to `import numpy.f2py` and then use either the function `numpy.f2py.run_main()` to generate a signature file (equivalent to running `f2py <args>`), or the function `numpy.f2py.compile()` to actually compile the Fortran code (i.e use the `-c` option with the `f2py` program). The only difference is that the source file must be read into Python as a string. This method is shown in the `Example1` and `Example2` folders in this repository. They recreate the first two examples from the F2PY documentation using pure Python.
+
+## Compiling Fortran programs which use subroutines in different files
 
 
 [SO1]: https://stackoverflow.com/questions/48826283/compile-fortran-module-with-f2py-and-python-3-6-on-windows-10
 [fg]: https://gcc.gnu.org/wiki/
 [MGW]: http://www.mingw.org/
 [MGWD]: https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/7.2.0/threads-posix/seh/
+[f2py]: https://numpy.org/doc/stable/f2py/f2py.getting-started.html
+[npf2py]: https://numpy.org/doc/stable/f2py/usage.html
