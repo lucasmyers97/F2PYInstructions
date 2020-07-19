@@ -1,7 +1,5 @@
 !    -*- f90 -*-
-! Note: the context of this file is case sensitive.
-
-python module fib2
+python module fib2 
     interface
         subroutine fib(a,n)
             real*8 dimension(n),intent(out),depend(n) :: a
@@ -9,6 +7,3 @@ python module fib2
         end subroutine fib
     end interface 
 end python module fib2
-
-! This file was auto-generated with f2py (version:2).
-! See http://cens.ioc.ee/projects/f2py2e/
